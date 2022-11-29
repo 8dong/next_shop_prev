@@ -32,18 +32,6 @@ const CartButton = ({ location, onClick }: CartButtonProps) => {
 
 const CartButtonWrapper = styled.button<{ location: 'header' | 'add' | 'remove' }>`
   position: absolute;
-  top: ${(props) => {
-    switch (props.location) {
-      case 'header':
-        return '50%';
-      case 'add':
-        return '93%';
-      case 'remove':
-        return '50%';
-    }
-  }};
-  right: 5%;
-  transform: translateY(-50%);
 
   cursor: pointer;
 

@@ -1,8 +1,14 @@
 import { useRouter } from 'next/router';
+import { useContext } from 'react';
 import styled from 'styled-components';
+
 import CartButton from '../common/CartButton';
+import CountBadge from '../common/CountBadge';
+import CartStateContext from '../../store/CartStateContext';
 
 const Header = ({ title }: { title: string }) => {
+  const cartListLength = useContext(CartStateContext)!.length;
+
   const router = useRouter();
 
   const goToCartPage = () => {
@@ -16,7 +22,10 @@ const Header = ({ title }: { title: string }) => {
   return (
     <HeaderWrapper>
       <h1 onClick={goToHomePage}>{title}</h1>
-      <CartButton location='header' onClick={goToCartPage} />
+      <div className='cartButton'>
+        <CartButton location='header' onClick={goToCartPage} />
+        <CountBadge count={cartListLength} />
+      </div>
     </HeaderWrapper>
   );
 };
@@ -49,6 +58,16 @@ const HeaderWrapper = styled.header`
     font-weight: 700;
 
     cursor: pointer;
+  }
+
+  .cartButton {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+
+    width: 1.5em;
+    height: 1.5em;
   }
 
   @media screen and (max-width: 768px) {
