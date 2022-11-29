@@ -1,13 +1,14 @@
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
 
+import CartContextProvider from '../store/CartContextProvider';
 import Page from '../components/layout/Page';
 
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <CartContextProvider>
       <Head>
         <link
           rel='stylesheet'
@@ -17,7 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Page>
         <Component {...pageProps} />
       </Page>
-    </>
+    </CartContextProvider>
   );
 }
 
