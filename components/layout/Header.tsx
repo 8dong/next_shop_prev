@@ -1,15 +1,22 @@
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
+import CartButton from '../common/CartButton';
 
 const Header = ({ title }: { title: string }) => {
   const router = useRouter();
+
   const goToCartPage = () => {
     router.push('/cart');
   };
 
+  const goToHomePage = () => {
+    router.push('/');
+  };
+
   return (
     <HeaderWrapper>
-      <h1 onClick={goToCartPage}>{title}</h1>
+      <h1 onClick={goToHomePage}>{title}</h1>
+      <CartButton location='header' onClick={goToCartPage} />
     </HeaderWrapper>
   );
 };
