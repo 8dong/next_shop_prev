@@ -1,8 +1,9 @@
+import { forwardRef } from 'react';
 import styled from 'styled-components';
 
-const ProductItemSkeleton = () => {
+const ProductItemSkeleton = forwardRef<HTMLLIElement>((_, ref) => {
   return (
-    <ProductItemSkeletonWrapper>
+    <ProductItemSkeletonWrapper ref={ref}>
       <div>
         <div className='image'></div>
         <span className='title'></span>
@@ -16,7 +17,7 @@ const ProductItemSkeleton = () => {
       </div>
     </ProductItemSkeletonWrapper>
   );
-};
+});
 
 const ProductItemSkeletonWrapper = styled.li`
   display: flex;
