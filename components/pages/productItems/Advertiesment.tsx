@@ -20,7 +20,7 @@ const Advertisement = ({ title, desc, imgSrc, imgAlt }: AdvertisementProps) => {
           src={imgSrc}
           alt={imgAlt}
           fill
-          sizes='(max-width: 768px) 50vw, 60vw'
+          sizes='(max-width: 768px) 100vw, 60vw'
           priority={true}
         />
       </div>
