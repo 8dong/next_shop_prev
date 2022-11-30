@@ -6,6 +6,7 @@ import CartStateContext from '../../store/CartStateContext';
 import CartDispatchContext from '../../store/CartDispatchContext';
 
 import type { Product } from '../../data/productsItem';
+import PaymentSection from '../../components/pages/cart/PaymentSection';
 
 const Cart = () => {
   const cartList = useContext(CartStateContext)!;
@@ -70,6 +71,7 @@ const Cart = () => {
         selectHandler={selectHandler}
         removeCartHandler={removeCartHandler}
       />
+      <PaymentSection selectedProducts={selectedProducts} />
     </>
   );
 };
