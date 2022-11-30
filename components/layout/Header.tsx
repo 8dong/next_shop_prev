@@ -1,13 +1,18 @@
 import { useRouter } from 'next/router';
-import { useContext } from 'react';
+// import { useContext } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import CartButton from '../common/CartButton';
 import CountBadge from '../common/CountBadge';
-import CartStateContext from '../../store/context/CartStateContext';
+// import CartStateContext from '../../store/context/CartStateContext';
+
+import type { RootState } from '../../store/redux/store';
 
 const Header = ({ title }: { title: string }) => {
-  const cartListLength = useContext(CartStateContext)!.length;
+  const cartList = useSelector((store: RootState) => store.cart.cartList);
+  const cartListLength = cartList.length;
+  // const cartListLength = useContext(CartStateContext)!.length;
 
   const router = useRouter();
 

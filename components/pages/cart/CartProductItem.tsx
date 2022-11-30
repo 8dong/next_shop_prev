@@ -20,7 +20,7 @@ const CartProductItem = ({
   removeCartHandler
 }: CartProductItemProps) => {
   return (
-    <CartProductITemWrapper>
+    <CartProductItemWrapper>
       <ProductImage productImage={product.coverImage} productTitle={product.title} />
       <ProductPrice productPrice={product.price} installment={5} />
       {isSelected ? (
@@ -29,11 +29,11 @@ const CartProductItem = ({
         <FloatButton buttonType='unselect' onClick={selectHandler} />
       )}
       <FloatButton buttonType='remove' onClick={removeCartHandler} />
-    </CartProductITemWrapper>
+    </CartProductItemWrapper>
   );
 };
 
-const CartProductITemWrapper = styled.li`
+const CartProductItemWrapper = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -1,18 +1,24 @@
 import { useState, useContext } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import CartHeader from '../../components/pages/cart/CartHeader';
 import CartProductItemList from '../../components/pages/cart/CartProductItemList';
-import CartStateContext from '../../store/context/CartStateContext';
-import CartDispatchContext from '../../store/context/CartDispatchContext';
+import cartStateSlice from '../../store/redux/cartStateSlice';
+// import CartStateContext from '../../store/context/CartStateContext';
+// import CartDispatchContext from '../../store/context/CartDispatchContext';
 
 import type { Product } from '../../data/productsItem';
 import PaymentSection from '../../components/pages/cart/PaymentSection';
+import { RootState } from '../../store/redux/store';
 
 const Cart = () => {
-  const cartList = useContext(CartStateContext)!;
+  const cartList = useSelector((store: RootState) => store.cart.cartList);
+  const dispatch = useDispatch();
+
+  // const cartList = useContext(CartStateContext)!;
   const [selectedProducts, setSelectedProducts] = useState(cartList);
 
-  const { editCartList } = useContext(CartDispatchContext)!;
+  // const { editCartList } = useContext(CartDispatchContext)!;
 
   const allSelectHandler = () => {
     setSelectedProducts([...cartList]);
@@ -37,7 +43,8 @@ const Cart = () => {
         );
       }
 
-      editCartList(newCartList);
+      // editCartList(newCartList);
+      dispatch(cartStateSlice.actions.editCartList({ newCartList }));
       setSelectedProducts(newSelectedProducts);
     };
   };

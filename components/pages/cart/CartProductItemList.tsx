@@ -1,10 +1,12 @@
-import { useContext } from 'react';
+// import { useContext } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
-import CartStateContext from '../../../store/context/CartStateContext';
 import CartProductItem from './CartProductItem';
+// import CartStateContext from '../../../store/context/CartStateContext';
 
-import { Product } from '../../../data/productsItem';
+import type { Product } from '../../../data/productsItem';
+import type { RootState } from '../../../store/redux/store';
 
 interface CartProductItemListProps {
   isSelectedValid(productId: string): boolean;
@@ -17,7 +19,8 @@ const CartProductItemList = ({
   selectHandler,
   removeCartHandler
 }: CartProductItemListProps) => {
-  const cartList = useContext(CartStateContext)!;
+  const cartList = useSelector((store: RootState) => store.cart.cartList);
+  // const cartList = useContext(CartStateContext)!;
 
   return (
     <CartProductItemListWrapper>

@@ -1,27 +1,39 @@
 import styled from 'styled-components';
+import { useSelector, useDispatch } from 'react-redux';
+// import { useContext } from 'react';
 
 import ProductImage from '../../productItems/ProductImage';
 import ProductPrice from '../../productItems/ProductPrice';
 import CartButton from '../../common/CartButton';
 
-import CartStateContext from '../../../store/context/CartStateContext';
-import CartDispatchContext from '../../../store/context/CartDispatchContext';
+import cartStateSlice from '../../../store/redux/cartStateSlice';
+// import CartStateContext from '../../../store/context/CartStateContext';
+// import CartDispatchContext from '../../../store/context/CartDispatchContext';
 
 import type { Product } from '../../../data/productsItem';
-import { useContext } from 'react';
+import type { RootState } from '../../../store/redux/store';
 
 const ProductItem = ({ product }: { product: Product }) => {
-  const cartList = useContext(CartStateContext)!;
-  const { editCartList } = useContext(CartDispatchContext)!;
+  const cartList = useSelector((store: RootState) => store.cart.cartList);
+  // const cartList = useContext(CartStateContext)!;
+
+  const dispath = useDispatch();
+  // const { editCartList } = useContext(CartDispatchContext)!;
 
   const isExist = cartList.some((cartProduct) => cartProduct.id === product.id);
 
   const removeHandler = () => {
-    editCartList(cartList.filter((cartProduct) => cartProduct.id !== product.id));
+    const newCartList = cartList.filter((cartProduct) => cartProduct.id !== product.id);
+
+    dispath(cartStateSlice.actions.editCartList({ newCartList }));
+    // editCartList(cartList.filter((cartProduct) => cartProduct.id !== product.id));
   };
 
   const addHandler = () => {
-    editCartList([...cartList, product]);
+    const newCartList = [...cartList, product];
+
+    dispath(cartStateSlice.actions.editCartList({ newCartList }));
+    // editCartList([...cartList, product]);
   };
 
   return (
