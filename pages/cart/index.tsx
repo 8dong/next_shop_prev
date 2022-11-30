@@ -19,8 +19,8 @@ const Cart = () => {
 
   const removeCartHandler = (target: 'selected' | 'product', removedProduct?: Product) => {
     return () => {
-      let newCartList = [];
-      let newSelectedProducts = [];
+      let newCartList: Product[] = [];
+      let newSelectedProducts: Product[] = [];
 
       if (target === 'selected') {
         newCartList = cartList.filter((cartProduct) => {
@@ -34,10 +34,10 @@ const Cart = () => {
         newSelectedProducts = selectedProducts.filter(
           (selectedProduct) => selectedProduct.id !== removedProduct.id
         );
-
-        editCartList(newCartList);
-        setSelectedProducts(newSelectedProducts);
       }
+
+      editCartList(newCartList);
+      setSelectedProducts(newSelectedProducts);
     };
   };
 
