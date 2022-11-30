@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
 
-import CartContextProvider from '../store/CartContextProvider';
+import CartContextProvider from '../store/context/CartContextProvider';
 import Page from '../components/layout/Page';
 
 import '../styles/globals.css';
