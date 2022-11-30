@@ -18,7 +18,7 @@ const CouponList = ({ coupons, couponSelectHandler, selectedCoupon }: CouponList
     setIsShowCouponList((prevState) => !prevState);
   };
 
-  const couponClickHandler = (coupon: Coupon) => {
+  const couponClickHandler = (coupon: Coupon | null) => {
     return () => {
       couponSelectHandler(coupon);
       setIsShowCouponList(false);
@@ -34,6 +34,7 @@ const CouponList = ({ coupons, couponSelectHandler, selectedCoupon }: CouponList
         </button>
         {isShowCouponList && (
           <ul>
+            <li onClick={couponClickHandler(null)}>쿠폰 미적용 선택</li>
             {coupons.map((coupon) => (
               <li onClick={couponClickHandler(coupon)} key={coupon.title}>
                 {coupon.title}
