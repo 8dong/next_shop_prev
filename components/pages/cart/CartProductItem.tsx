@@ -6,13 +6,29 @@ import FloatButton from '../../common/FloatButton';
 
 import type { Product } from '../../../data/productsItem';
 
-const CartProductItem = ({ product }: { product: Product }) => {
+interface CartProductItemProps {
+  product: Product;
+  isSelected: boolean;
+  selectHandler: () => void;
+  removeCartHandler: () => void;
+}
+
+const CartProductItem = ({
+  product,
+  isSelected,
+  selectHandler,
+  removeCartHandler
+}: CartProductItemProps) => {
   return (
     <CartProductITemWrapper>
       <ProductImage productImage={product.coverImage} productTitle={product.title} />
       <ProductPrice productPrice={product.price} installment={5} />
-      <FloatButton buttonType='select' />
-      <FloatButton buttonType='remove' />
+      {isSelected ? (
+        <FloatButton buttonType='select' onClick={selectHandler} />
+      ) : (
+        <FloatButton buttonType='unselect' onClick={selectHandler} />
+      )}
+      <FloatButton buttonType='remove' onClick={removeCartHandler} />
     </CartProductITemWrapper>
   );
 };

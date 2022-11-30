@@ -65,7 +65,11 @@ const Cart = () => {
   return (
     <>
       <CartHeader allSelectHandler={allSelectHandler} removeCartHandler={removeCartHandler} />
-      <CartProductItemList />
+      <CartProductItemList
+        isSelectedValid={isSelectedValid}
+        selectHandler={selectHandler}
+        removeCartHandler={removeCartHandler}
+      />
     </>
   );
 };
