@@ -4,8 +4,8 @@ import ProductImage from '../../productItems/ProductImage';
 import ProductPrice from '../../productItems/ProductPrice';
 import CartButton from '../../common/CartButton';
 
-import CartStateContext from '../../../store/CartStateContext';
-import CartDispatchContext from '../../../store/CartDispatchContext';
+import CartStateContext from '../../../store/context/CartStateContext';
+import CartDispatchContext from '../../../store/context/CartDispatchContext';
 
 import type { Product } from '../../../data/productsItem';
 import { useContext } from 'react';

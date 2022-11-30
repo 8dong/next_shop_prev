@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import Button from '../../common/Button';
-
 import type { Coupon } from '../../../data/coupons';
 
 interface CouponListProps {

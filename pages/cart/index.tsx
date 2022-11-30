@@ -2,8 +2,8 @@ import { useState, useContext } from 'react';
 
 import CartHeader from '../../components/pages/cart/CartHeader';
 import CartProductItemList from '../../components/pages/cart/CartProductItemList';
-import CartStateContext from '../../store/CartStateContext';
-import CartDispatchContext from '../../store/CartDispatchContext';
+import CartStateContext from '../../store/context/CartStateContext';
+import CartDispatchContext from '../../store/context/CartDispatchContext';
 
 import type { Product } from '../../data/productsItem';
 import PaymentSection from '../../components/pages/cart/PaymentSection';

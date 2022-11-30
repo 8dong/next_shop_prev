@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 
-import CartStateContext from '../../../store/CartStateContext';
+import CartStateContext from '../../../store/context/CartStateContext';
 import CartProductItem from './CartProductItem';
 
 import { Product } from '../../../data/productsItem';

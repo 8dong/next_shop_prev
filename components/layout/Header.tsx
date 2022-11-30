@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import CartButton from '../common/CartButton';
 import CountBadge from '../common/CountBadge';
-import CartStateContext from '../../store/CartStateContext';
+import CartStateContext from '../../store/context/CartStateContext';
 
 const Header = ({ title }: { title: string }) => {
   const cartListLength = useContext(CartStateContext)!.length;
